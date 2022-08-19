@@ -35,10 +35,10 @@ class UserController extends Controller
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
                 return $this->sendResponse(['token' => $token, 'user'=>$user], 200);
             } else {
-                return $this->sendResponse(['error' => 'Usuario o contraseña incorrectos'], 401);
+                return $this->sendError('Usuario o contraseña incorrectos');
             }
         } else {
-            return $this->sendResponse(['error' => 'Usuario no encontrado'], 404);
+            return $this->sendError('Usuario no encontrado');
         }
     }
 
