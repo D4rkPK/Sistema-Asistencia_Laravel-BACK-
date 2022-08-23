@@ -18,7 +18,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User();
-        $user->user = $request->user;
+        $user->cui = $request->cui;
+        $user->nombre = $request->nombre;
+        $user->apellido = $request->apellido;
+        $user->telefono_personal = $request->telefono_personal;
+        $user->telefono = $request->telefono;
+        $user->extension = $request->extension;
+        $user->puesto_id = $request->puesto_id;
+        $user->area_id = $request->area_id;
         $user->password = bcrypt($request->password);
         $user->save();
         return response()->json(['message' => 'Usuario creado correctamente'], 201);
@@ -27,13 +34,13 @@ class UserController extends Controller
     public function login(Request $request)
     {
         Log::info($request);
-        $userSearch = User::where('user', $request->user)->first();
+        $userSearch = User::where('cui', $request->cui)->first();
 
         if ($userSearch) {
-            if (Auth::attempt(['user' => $request->user, 'password' => $request->password])) {
+            if (Auth::attempt(['cui' => $request->cui, 'password' => $request->password])) {
                 $user = Auth::user();
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                return $this->sendResponse(['token' => $token, 'user'=>$user], 200);
+                return $this->sendResponse(['token' => $token, 'cui'=>$user], 200);
             } else {
                 return $this->sendError('Usuario o contraseña incorrectos');
             }
