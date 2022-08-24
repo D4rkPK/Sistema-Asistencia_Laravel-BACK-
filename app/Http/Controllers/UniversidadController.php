@@ -104,6 +104,6 @@ class UniversidadController extends Controller
 
         $uni->delete();
 
-        return response()->json(['message' => 'Universidad eliminada correctamente'], 200);
+        return $this->sendResponse($uni, 'success');
     }
 }

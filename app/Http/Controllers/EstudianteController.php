@@ -114,7 +114,7 @@ class EstudianteController extends Controller
             return response()->json(['message' => 'Estudiante no encontrado'], 404);
         }
         $estudiante->delete();
-        return response()->json(['message' => 'Estudiante eliminado'], 200);
+        return $this->sendResponse($estudiante, 'success');
 
     }
 }

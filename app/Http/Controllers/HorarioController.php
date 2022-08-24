@@ -67,6 +67,6 @@ class HorarioController extends Controller
             return response()->json(['message' => 'Horario no encontrado'], 404);
         }
         $horario->delete();
-        return response()->json(['message' => 'Horario eliminado correctamente'], 200);
+        return $this->sendResponse($horario, 'success');
     }
 }

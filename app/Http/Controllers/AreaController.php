@@ -109,6 +109,6 @@ class AreaController extends Controller
 
         $area->delete();
 
-        return response()->json(['message' => 'Area eliminada correctamente'], 200);
+        return $this->sendResponse($area, 'success');
     }
 }

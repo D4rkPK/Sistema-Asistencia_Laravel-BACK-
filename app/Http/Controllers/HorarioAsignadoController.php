@@ -67,6 +67,6 @@ class HorarioAsignadoController extends Controller
             return response()->json(['message' => 'Horario asignado no encontrado'], 404);
         }
         $horario_asignado->delete();
-        return response()->json(['message' => 'Horario asignado eliminado correctamente'], 200);
+        return $this->sendResponse($horario_asignado, 'success');
     }
 }

@@ -108,6 +108,8 @@ class PuestoController extends Controller
 
         $puesto->delete();
 
-        return response()->json(['message' => 'Puesto eliminado correctamente'], 200);
+        return $this->sendResponse($puesto, 'success');
+
+       /* return response()->json(['message' => 'Puesto eliminado correctamente'], 200);*/
     }
 }

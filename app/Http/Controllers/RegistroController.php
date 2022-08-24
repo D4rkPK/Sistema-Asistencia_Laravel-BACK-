@@ -67,6 +67,6 @@ class RegistroController extends Controller
             return response()->json(['message' => 'Registro no encontrado'], 404);
         }
         $registro->delete();
-        return response()->json(['message' => 'Registro eliminado'], 200);
+        return $this->sendResponse($registro, 'Success');
     }
 }
