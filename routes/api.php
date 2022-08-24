@@ -44,3 +44,31 @@ Route::post('/area/create', 'AreaController@store');
 Route::get('/area/show/{id}', 'AreaController@show');
 Route::put('/area/update/{id}', 'AreaController@update');
 Route::delete('/area/delete/{id}', 'AreaController@destroy');
+
+/* HORARIOS */
+Route::get('/horario', 'HorarioController@index');
+Route::post('/horario/create', 'HorarioController@store');
+Route::get('/horario/show/{id}', 'HorarioController@show');
+Route::put('/horario/update/{id}', 'HorarioController@update');
+Route::delete('/horario/delete/{id}', 'HorarioController@destroy');
+
+/* ESTUDIANTES */
+Route::get('/estudiante', 'EstudianteController@index');
+Route::post('/estudiante/create', 'EstudianteController@store');
+Route::get('/estudiante/show/{id}', 'EstudianteController@show');
+Route::put('/estudiante/update/{id}', 'EstudianteController@update');
+Route::delete('/estudiante/delete/{id}', 'EstudianteController@destroy');
+
+/* HORARIOS ASIGNADOS */
+Route::get('/horario_asignado', 'HorarioAsignadoController@index');
+Route::post('/horario_asignado/create', 'HorarioAsignadoController@store');
+Route::get('/horario_asignado/show/{id}', 'HorarioAsignadoController@show');
+Route::put('/horario_asignado/update/{id}', 'HorarioAsignadoController@update');
+Route::delete('/horario_asignado/delete/{id}', 'HorarioAsignadoController@destroy');
+
+/* REGISTRO */
+Route::get('/registro', 'RegistroController@index');
+Route::post('/registro/create', 'RegistroController@store');
+Route::get('/registro/show/{id}', 'RegistroController@show');
+Route::put('/registro/update/{id}', 'RegistroController@update');
+Route::delete('/registro/delete/{id}', 'RegistroController@destroy');
