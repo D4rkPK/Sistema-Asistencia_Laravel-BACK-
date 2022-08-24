@@ -21,3 +21,16 @@ use Illuminate\Support\Facades\Route;
 /* AUTH */
 Route::post('/login', 'adminUsers\UserController@login');
 Route::post('/registro', 'adminUsers\UserController@store');
+
+/* PUESTOS */
+Route::get('/puesto', 'PuestoController@index');
+Route::post('/puesto/create', 'PuestoController@store');
+Route::get('/puesto/show/{id}', 'PuestoController@show');
+Route::put('/puesto/update/{id}', 'PuestoController@update');
+Route::delete('/puesto/delete/{id}', 'PuestoController@destroy');
+
+Route::get('/puesto', 'PuestoController@index');
+Route::post('/universidad/create', 'UniversidadController@store');
+Route::get('/puesto/show', 'PuestoController@show');
+Route::put('/puesto/update/{id}', 'PuestoController@update');
+Route::delete('/puesto/delete/{id}', 'PuestoController@destroy');
