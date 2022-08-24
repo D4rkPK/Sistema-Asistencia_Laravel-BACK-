@@ -30,6 +30,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function puesto()
+    {
+        return $this->hasOne(Puesto::class, 'id', 'puesto_id');
+    }
+
+    public function area()
+    {
+        return $this->hasOne(Area::class, 'id', 'area_id');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
