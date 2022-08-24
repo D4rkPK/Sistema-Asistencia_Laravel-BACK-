@@ -15,11 +15,13 @@ class UniversidadController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['store']); //Exceptuamos las funciones login
+        $this->middleware('auth:api')->except(['index','store', 'show', 'update', 'destroy']); //Exceptuamos las funciones login
     }
     public function index()
     {
         //
+        $uni = Universidad::all();
+        return response()->json($uni, 200);
     }
 
     /**
@@ -54,9 +56,11 @@ class UniversidadController extends Controller
      * @param  \App\Universidad  $universidad
      * @return \Illuminate\Http\Response
      */
-    public function show(Universidad $universidad)
+    public function show($id)
     {
         //
+        $uni = Universidad::find($id);
+        return response()->json($uni);
     }
 
     /**
@@ -77,9 +81,14 @@ class UniversidadController extends Controller
      * @param  \App\Universidad  $universidad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Universidad $universidad)
+    public function update(Request $request, $id)
     {
         //
+        $uni = Universidad::find($id);
+
+        $uni->update($request->all());
+
+        return response()->json(['Universidad actualizada' => $uni], 200);
     }
 
     /**
@@ -88,8 +97,13 @@ class UniversidadController extends Controller
      * @param  \App\Universidad  $universidad
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Universidad $universidad)
+    public function destroy($id)
     {
         //
+        $uni = Universidad::find($id);
+
+        $uni->delete();
+
+        return response()->json(['message' => 'Universidad eliminada correctamente'], 200);
     }
 }

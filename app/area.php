@@ -4,15 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
-
-class Puesto extends Model
+class area extends Model
 {
-
+    //
     protected $table = 'area';
     protected $fillable = [
-        'nombre_puesto'
+        'descripcion', 'user_id'
     ];
 
     protected $casts = [

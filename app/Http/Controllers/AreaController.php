@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Puesto;
+use App\Area;
+
 use Illuminate\Http\Request;
 
-class PuestoController extends Controller
+class AreaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +22,8 @@ class PuestoController extends Controller
     public function index()
     {
         //
-        $puesto = puesto::all();
-        return response()->json($puesto, 200);
+        $area = area::all();
+        return response()->json($area, 200);
 
         // load the view and pass the sharks
     }
@@ -46,12 +46,13 @@ class PuestoController extends Controller
      */
     public function store(Request $request)
     {
-        $puesto = new Puesto();
+        $area = new Area();
 
-        $puesto->nombre_puesto = $request->nombre_puesto;
+        $area->descripcion = $request->descripcion;
+        $area->user_id = $request->user_id;
 
-        $puesto->save();
-        return response()->json(['message' => 'Puesto creado correctamente'], 201);
+        $area->save();
+        return response()->json(['message' => 'Area creada correctamente'], 201);
     }
 
     /**
@@ -63,8 +64,8 @@ class PuestoController extends Controller
     public function show($id)
     {
         //
-        $puesto = Puesto::find($id);
-        return response()->json($puesto);
+        $area = Area::find($id);
+        return response()->json($area);
     }
 
     /**
@@ -73,7 +74,7 @@ class PuestoController extends Controller
      * @param  \App\Puesto  $puesto
      * @return \Illuminate\Http\Response
      */
-    public function edit(Puesto $puesto)
+    public function edit(Area $area)
     {
         //
 
@@ -88,11 +89,11 @@ class PuestoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $puesto = Puesto::find($id);
+        $area = Area::find($id);
 
-        $puesto->update($request->all());
+        $area->update($request->all());
 
-        return response()->json(['puesto actualizado' => $puesto], 200);
+        return response()->json(['Area actualizada' => $area], 200);
     }
 
     /**
@@ -104,10 +105,10 @@ class PuestoController extends Controller
     public function destroy($id)
     {
         //
-        $puesto = Puesto::find($id);
+        $area = Area::find($id);
 
-        $puesto->delete();
+        $area->delete();
 
-        return response()->json(['message' => 'Puesto eliminado correctamente'], 200);
+        return response()->json(['message' => 'Area eliminada correctamente'], 200);
     }
 }

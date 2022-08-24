@@ -29,8 +29,18 @@ Route::get('/puesto/show/{id}', 'PuestoController@show');
 Route::put('/puesto/update/{id}', 'PuestoController@update');
 Route::delete('/puesto/delete/{id}', 'PuestoController@destroy');
 
-Route::get('/puesto', 'PuestoController@index');
+
+/* UNIVERSIDADES */
+Route::get('/universidad', 'UniversidadController@index');
 Route::post('/universidad/create', 'UniversidadController@store');
-Route::get('/puesto/show', 'PuestoController@show');
-Route::put('/puesto/update/{id}', 'PuestoController@update');
-Route::delete('/puesto/delete/{id}', 'PuestoController@destroy');
+Route::get('/universidad/show/{id}', 'UniversidadController@show');
+Route::put('/universidad/update/{id}', 'UniversidadController@update');
+Route::delete('/universidad/delete/{id}', 'UniversidadController@destroy');
+
+
+/* AREAS */
+Route::get('/area', 'AreaController@index');
+Route::post('/area/create', 'AreaController@store');
+Route::get('/area/show/{id}', 'AreaController@show');
+Route::put('/area/update/{id}', 'AreaController@update');
+Route::delete('/area/delete/{id}', 'AreaController@destroy');
