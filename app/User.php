@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        "cui", 'nombre', 'apellido', "telefono_personal", "telefono", "extension", "puesto_id", "area_id", "password", "remember_token",
+        "cui", 'nombre', 'apellido', "puesto_id", "area_id", "password", "remember_token",
     ];
 
     /**
@@ -40,4 +40,14 @@ class User extends Authenticatable
         'updated_at' => 'datetime:d-m-Y h:i:s',
         'deleted_at' => 'datetime:d-m-Y h:i:s'
     ];
+
+    public function puesto()
+    {
+        return $this->hasOne(Puesto::class, 'id', 'puesto_id');
+    }
+
+    public function area()
+    {
+        return $this->hasOne(Area::class, 'id', 'area_id');
+    }
 }

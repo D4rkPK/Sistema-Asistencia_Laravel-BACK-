@@ -23,7 +23,7 @@ class AreaController extends Controller
     {
         //
         $area = area::all();
-        return response()->json($area, 200);
+        return $this->sendResponse($area, 200);
 
         // load the view and pass the sharks
     }

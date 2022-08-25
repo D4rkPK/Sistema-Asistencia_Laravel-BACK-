@@ -21,9 +21,6 @@ class UserController extends Controller
         $user->cui = $request->cui;
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
-        $user->telefono_personal = $request->telefono_personal;
-        $user->telefono = $request->telefono;
-        $user->extension = $request->extension;
         $user->puesto_id = $request->puesto_id;
         $user->area_id = $request->area_id;
         $user->password = bcrypt($request->password);

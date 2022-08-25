@@ -12,7 +12,7 @@ class Universidad extends Model
     protected $table = 'universidad';
 
     protected $fillable = [
-        'id', 'nombre'
+       'nombre', 'abreviatura'
     ];
 
     protected $casts = [

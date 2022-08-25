@@ -11,7 +11,7 @@ class Estudiante extends Model
     use SoftDeletes;
     protected $table = 'estudiante';
     protected $fillable = [
-        'id', 'cui', 'universidad_id', 'area_id', 'nombre', 'apellido', 'carne', 'correo', 'huella',
+        'cui', 'universidad_id', 'area_id', 'nombre', 'apellido', 'carne', 'correo', 'huella',
     ];
 
     protected $casts = [
@@ -19,4 +19,13 @@ class Estudiante extends Model
         'updated_at' => 'datetime:d-m-Y h:i:s',
         'deleted_at' => 'datetime:d-m-Y h:i:s'
     ];
+
+    public function universidad()
+    {
+        return $this->hasOne(Universidad::class, 'id', 'universidad_id');
+    }
+    public function area()
+    {
+        return $this->hasOne(Area::class, 'id', 'area_id');
+    }
 }

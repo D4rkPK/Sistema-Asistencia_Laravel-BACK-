@@ -14,7 +14,7 @@ class Puesto extends Model
 
     protected $table = 'puesto';
     protected $fillable = [
-        'nombre_puesto'
+        'descripcion'
     ];
 
     protected $casts = [

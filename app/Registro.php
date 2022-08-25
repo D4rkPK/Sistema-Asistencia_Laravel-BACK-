@@ -13,7 +13,7 @@ class Registro extends Model
     protected $table = 'registro';
 
     protected $fillable = [
-        'horario_asignado_id', 'entrada', 'salida', 'faltante', 'justificacion',
+        'horario_asignado_id', 'entrada', 'salida', 'fecha',
     ];
 
     protected $casts = [
@@ -21,4 +21,9 @@ class Registro extends Model
         'updated_at' => 'datetime:d-m-Y h:i:s',
         'deleted_at' => 'datetime:d-m-Y h:i:s'
     ];
+
+    public function horario_asignado()
+    {
+        return $this->hasOne(Horario_asignado::class, 'id', 'horario_asignado_id');
+    }
 }

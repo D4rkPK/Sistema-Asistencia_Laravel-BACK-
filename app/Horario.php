@@ -11,7 +11,7 @@ class Horario extends Model
     use SoftDeletes;
     protected $table = 'horario';
     protected $fillable = [
-        'id','hora_entrada', 'hora_salida',
+        'descripcion','hora_entrada', 'hora_salida',
     ];
 
     protected $casts = [

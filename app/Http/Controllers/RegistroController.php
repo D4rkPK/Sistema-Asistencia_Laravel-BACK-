@@ -16,8 +16,8 @@ class RegistroController extends Controller
     public function index()
     {
         //
-        $registro = Registro::all();
-        return response()->json($registro, 200);
+        $registro = Registro::with('horario_asignado')->get();
+        return $this->sendResponse($registro, 200);
     }
 
     public function create()
@@ -32,8 +32,6 @@ class RegistroController extends Controller
         $registro->horario_asignado_id = $request->horario_asignado_id;
         $registro->entrada= $request->entrada;
         $registro->salida = $request->salida;
-        $registro->faltante = $request->faltante;
-        $registro->justificacion = $request->justificacion;
         $registro->save();
         return response()->json(['message' => 'Registro creado correctamente'], 201);
     }

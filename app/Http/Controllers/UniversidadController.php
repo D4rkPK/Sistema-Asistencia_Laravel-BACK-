@@ -21,7 +21,7 @@ class UniversidadController extends Controller
     {
         //
         $uni = Universidad::all();
-        return response()->json($uni, 200);
+        return $this->sendResponse($uni, 200);
     }
 
     /**
@@ -44,8 +44,8 @@ class UniversidadController extends Controller
     {
         //
         $universidad = new Universidad();
-        $universidad->id = $request->id;
         $universidad->nombre = $request->nombre;
+        $universidad->abreviatura = $request->abreviatura;
         $universidad->save();
         return response()->json(['message' => 'Universidad creada correctamente'], 201);
     }

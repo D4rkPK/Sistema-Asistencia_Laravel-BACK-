@@ -23,7 +23,7 @@ class PuestoController extends Controller
     {
         //
         $puesto = puesto::all();
-        return response()->json($puesto, 200);
+        return $this->sendResponse($puesto, 200);
 
         // load the view and pass the sharks
     }
@@ -48,7 +48,7 @@ class PuestoController extends Controller
     {
         $puesto = new Puesto();
 
-        $puesto->nombre_puesto = $request->nombre_puesto;
+        $puesto->descripcion = $request->descripcion;
 
         $puesto->save();
         return response()->json(['message' => 'Puesto creado correctamente'], 201);

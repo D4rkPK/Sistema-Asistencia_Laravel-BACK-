@@ -17,7 +17,7 @@ class HorarioController extends Controller
     {
         //
         $horario = Horario::all();
-        return response()->json($horario, 200);
+        return $this->sendResponse($horario, 200);
     }
 
     public function create()
@@ -29,7 +29,7 @@ class HorarioController extends Controller
     {
         //
         $horario = new Horario();
-        $horario->id = $request->id;
+        $horario->descripcion = $request->descripcion;
         $horario->hora_entrada = $request->hora_entrada;
         $horario->hora_salida = $request->hora_salida;
         $horario->save();

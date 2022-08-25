@@ -16,8 +16,8 @@ class HorarioAsignadoController extends Controller
     public function index()
     {
         //
-        $horario_asignado = Horario_asignado::all();
-        return response()->json($horario_asignado, 200);
+        $horario_asignado = Horario_asignado::with('estudiante', 'horario')->get();
+        return $this->sendResponse($horario_asignado, 200);
     }
 
     public function create()
@@ -29,7 +29,6 @@ class HorarioAsignadoController extends Controller
     {
         //
         $horario_asignado = new Horario_asignado();
-        $horario_asignado->id = $request->id;
         $horario_asignado->estudiante_id = $request->estudiante_id;
         $horario_asignado->horario_id = $request->horario_id;
         $horario_asignado->save();
