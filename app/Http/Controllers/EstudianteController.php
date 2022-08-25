@@ -16,7 +16,7 @@ class EstudianteController extends Controller
     public function index()
     {
         //
-        $estudiante = Estudiante::all();
+        $estudiante = Estudiante::with('universidad', 'area')->get();
         return $this->sendResponse($estudiante, 200);
     }
     /**
