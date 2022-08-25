@@ -17,7 +17,7 @@ class EstudianteController extends Controller
     {
         //
         $estudiante = Estudiante::all();
-        return response()->json($estudiante, 200);
+        return $this->sendResponse($estudiante, 200);
     }
     /**
      * Show the form for creating a new resource.
