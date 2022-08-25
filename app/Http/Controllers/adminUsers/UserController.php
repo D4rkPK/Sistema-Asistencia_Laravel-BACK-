@@ -35,9 +35,9 @@ class UserController extends Controller
 
         if ($userSearch) {
             if (Auth::attempt(['cui' => $request->cui, 'password' => $request->password])) {
-                $user = Auth::user();
+                $user = Auth::user()->with('puesto', 'area')->first();
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                return $this->sendResponse(['token' => $token, 'cui'=>$user], 200);
+                return $this->sendResponse(['token' => $token, 'user'=>$user], 200);
             } else {
                 return $this->sendError('Usuario o contraseña incorrectos');
             }
@@ -45,8 +45,6 @@ class UserController extends Controller
             return $this->sendError('Usuario no encontrado');
         }
     }
-
-
 
     /* public function sadd3(Request $request)
     {
