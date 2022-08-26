@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 /* AUTH */
 Route::post('/login', 'adminUsers\UserController@login');
 Route::post('/registro', 'adminUsers\UserController@store');
+Route::get('/users', 'adminUsers\UserController@index');
 
 /* PUESTOS */
 Route::get('/puesto', 'PuestoController@index');

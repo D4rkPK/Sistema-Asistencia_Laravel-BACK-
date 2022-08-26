@@ -12,7 +12,14 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['store', 'login']); //Exceptuamos las funciones login
+        $this->middleware('auth:api')->except(['store', 'login', 'index']); //Exceptuamos las funciones login
+    }
+
+    public function index()
+    {
+        //
+        $users = User::with('puesto', 'area')->get();
+        return $this->sendResponse($users, 200);
     }
 
     public function store(Request $request)
