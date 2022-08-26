@@ -41,6 +41,7 @@ class User extends Authenticatable
         'deleted_at' => 'datetime:d-m-Y h:i:s'
     ];
 
+
     public function puesto()
     {
         return $this->hasOne(Puesto::class, 'id', 'puesto_id');

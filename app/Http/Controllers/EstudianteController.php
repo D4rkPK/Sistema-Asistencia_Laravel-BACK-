@@ -11,7 +11,7 @@ class EstudianteController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index','store', 'show', 'update', 'destroy']); //Exceptuamos las funciones login
+        $this->middleware('auth:api')->except(['index', 'store', 'show', 'update', 'destroy']); //Exceptuamos las funciones login
     }
 
     public function index()
@@ -26,9 +26,10 @@ class EstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create(){
-
+    public function create()
+    {
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -52,7 +53,6 @@ class EstudianteController extends Controller
         $estudiante->huella = $request->huella;
         $estudiante->save();
         return response()->json(['message' => 'Estudiante creado correctamente'], 201);
-
     }
 
     /**
@@ -62,13 +62,13 @@ class EstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id){
+    public function show($id)
+    {
         $estudiante = Estudiante::find($id);
-        if(!$estudiante){
+        if (!$estudiante) {
             return response()->json(['message' => 'Estudiante no encontrado'], 404);
         }
         return response()->json($estudiante, 200);
-
     }
 
     /**
@@ -78,8 +78,8 @@ class EstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(Estudiante $estudiante){
-
+    public function edit(Estudiante $estudiante)
+    {
     }
 
     /**
@@ -90,18 +90,18 @@ class EstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         Log::info('Metodo de editar');
         Log::info($request->all());
         $estudiante = Estudiante::find($id);
-        if(!$estudiante){
+        if (!$estudiante) {
             return response()->json(['message' => 'Estudiante no encontrado'], 404);
         }
 
         $estudiante->update($request->all());
 
         return response()->json(['Estudiante actualizado' => $estudiante], 200);
-
     }
 
     /**
@@ -111,15 +111,13 @@ class EstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $estudiante = Estudiante::find($id);
-        if(!$estudiante){
+        if (!$estudiante) {
             return response()->json(['message' => 'Estudiante no encontrado'], 404);
         }
         $estudiante->delete();
         return $this->sendResponse($estudiante, 'success');
-
     }
 }
-
-
