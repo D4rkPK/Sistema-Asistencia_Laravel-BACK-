@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Estudiante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class EstudianteController extends Controller
 {
@@ -36,7 +37,10 @@ class EstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        Log::info('Metodo de guardado');
+        Log::info($request->all());
         $estudiante = new Estudiante();
         $estudiante->cui = $request->cui;
         $estudiante->universidad_id = $request->universidad_id;
@@ -87,11 +91,12 @@ class EstudianteController extends Controller
      */
 
     public function update(Request $request, $id){
+        Log::info('Metodo de editar');
+        Log::info($request->all());
         $estudiante = Estudiante::find($id);
         if(!$estudiante){
             return response()->json(['message' => 'Estudiante no encontrado'], 404);
         }
-        $estudiante = Estudiante::find($id);
 
         $estudiante->update($request->all());
 
