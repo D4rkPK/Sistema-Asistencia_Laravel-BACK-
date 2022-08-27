@@ -19,4 +19,9 @@ class Area extends Model
         'updated_at' => 'datetime:d-m-Y h:i:s',
         'deleted_at' => 'datetime:d-m-Y h:i:s'
     ];
+
+    public function encargado()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }
