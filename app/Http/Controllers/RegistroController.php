@@ -67,4 +67,5 @@ class RegistroController extends Controller
         $registro->delete();
         return $this->sendResponse($registro, 'Success');
     }
+
 }

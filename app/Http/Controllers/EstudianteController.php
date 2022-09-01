@@ -120,4 +120,9 @@ class EstudianteController extends Controller
         $estudiante->delete();
         return $this->sendResponse($estudiante, 'success');
     }
+
+    public function openFingerPrint() {
+        $answer = shell_exec('start C:\EnrollmentSample.exe');
+        return response()->json(['message' => $answer], 200);
+    }
 }

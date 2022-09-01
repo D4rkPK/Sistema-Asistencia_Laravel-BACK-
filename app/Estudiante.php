@@ -29,5 +29,4 @@ class Estudiante extends Model
     {
         return $this->hasOne(Area::class, 'id', 'area_id');
     }
-
 }

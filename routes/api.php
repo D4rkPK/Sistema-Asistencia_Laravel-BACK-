@@ -60,6 +60,8 @@ Route::get('/estudiante/show/{id}', 'EstudianteController@show');
 Route::put('/estudiante/update/{id}', 'EstudianteController@update');
 Route::delete('/estudiante/delete/{id}', 'EstudianteController@destroy');
 
+Route::get('/estudiante/huella', 'EstudianteController@openFingerPrint');
+
 /* HORARIOS ASIGNADOS */
 Route::get('/horario_asignado', 'HorarioAsignadoController@index');
 Route::post('/horario_asignado/create', 'HorarioAsignadoController@store');
@@ -73,3 +75,4 @@ Route::post('/registro/create', 'RegistroController@store');
 Route::get('/registro/show/{id}', 'RegistroController@show');
 Route::put('/registro/update/{id}', 'RegistroController@update');
 Route::delete('/registro/delete/{id}', 'RegistroController@destroy');
+
