@@ -79,6 +79,6 @@ Route::delete('/registro/delete/{id}', 'RegistroController@destroy');
 
 /* TEMP ESTUDIANTES */
 
-Route::get('/temp_estudiante', 'TempEstudiantesController@index');
-Route::post('/temp_estudiante/create', 'TempEstudiantesController@store');
+Route::get('/temp_estudiante', 'TempEstudianteController@index');
+Route::post('/temp_estudiante/create', 'TempEstudianteController@store');
 

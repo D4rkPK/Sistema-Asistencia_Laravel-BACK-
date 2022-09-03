@@ -30,6 +30,13 @@ class TempEstudiantesController extends Controller
         return response()->json(['message' => 'Estudiante creado correctamente'], 201);
     }
 
+    public function delete($id)
+    {
+        $temp_estudiantes = temp_estudiantes::find($id);
+        $temp_estudiantes->delete();
+        return response()->json(['message' => 'Estudiante eliminado correctamente'], 200);
+    }
+
 
 
 }
