@@ -81,4 +81,5 @@ Route::delete('/registro/delete/{id}', 'RegistroController@destroy');
 
 Route::get('/temp_estudiante', 'TempEstudianteController@index');
 Route::post('/temp_estudiante/create', 'TempEstudianteController@store');
+Route::delete('/temp_estudiante/delete/{id}', 'TempEstudianteController@destroy');
 
