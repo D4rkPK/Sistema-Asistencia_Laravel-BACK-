@@ -76,3 +76,9 @@ Route::get('/registro/show/{id}', 'RegistroController@show');
 Route::put('/registro/update/{id}', 'RegistroController@update');
 Route::delete('/registro/delete/{id}', 'RegistroController@destroy');
 
+
+/* TEMP ESTUDIANTES */
+
+Route::get('/temp_estudiante', 'TempEstudianteController@index');
+Route::post('/temp_estudiante/create', 'TempEstudianteController@store');
+
