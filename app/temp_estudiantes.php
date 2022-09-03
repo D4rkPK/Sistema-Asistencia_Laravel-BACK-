@@ -8,8 +8,8 @@ class temp_estudiantes extends Model
 {
     //
 
-    protected $table = 'temp_estudiantes';
-    protected $fillable = ['id_estudiante'];
+    protected $table = 'temp_estudiante';
+    protected $fillable = ['estudiante_id'];
 
     public function estudiante()
     {

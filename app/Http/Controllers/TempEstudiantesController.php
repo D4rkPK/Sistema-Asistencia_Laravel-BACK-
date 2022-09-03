@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\temp_estudiantes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TempEstudiantesController extends Controller
 {
@@ -22,8 +23,9 @@ class TempEstudiantesController extends Controller
 
     public function store(Request $request)
     {
+        Log::info($request->all());
         $temp_estudiantes = new temp_estudiantes();
-        $temp_estudiantes->id_estudiante = $request->id_estudiante;
+        $temp_estudiantes->estudiante_id = $request->estudiante_id;
         $temp_estudiantes->save();
         return response()->json(['message' => 'Estudiante creado correctamente'], 201);
     }

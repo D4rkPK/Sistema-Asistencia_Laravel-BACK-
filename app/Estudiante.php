@@ -11,9 +11,11 @@ class Estudiante extends Model
     use SoftDeletes;
     protected $table = 'estudiante';
     protected $fillable = [
-        'cui', 'universidad_id', 'area_id', 'nombre', 'apellido', 'carne', 'correo', 'huella',
+        'cui', 'universidad_id', 'area_id', 'nombre', 'apellido', 'carne', 'correo', 'estado_huella',
     ];
 
+    protected $hidden = ['huella'];
+    
     protected $casts = [
         'created_at' => 'datetime:d-m-Y h:i:s',
         'updated_at' => 'datetime:d-m-Y h:i:s',
