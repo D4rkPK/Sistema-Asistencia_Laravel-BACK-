@@ -23,6 +23,8 @@ class TempEstudiantesController extends Controller
 
     public function store(Request $request)
     {
+        $temp_estudiantes = temp_estudiantes::truncate();
+
         Log::info($request->all());
         $temp_estudiantes = new temp_estudiantes();
         $temp_estudiantes->estudiante_id = $request->estudiante_id;
@@ -30,13 +32,11 @@ class TempEstudiantesController extends Controller
         return response()->json(['message' => 'Estudiante creado correctamente'], 201);
     }
 
-    public function delete($id)
+    public function destroy()
     {
-        $temp_estudiantes = temp_estudiantes::find($id);
+        Log::info('Metodo de eliminacion');
+        $temp_estudiantes = temp_estudiantes::all();
         $temp_estudiantes->delete();
         return response()->json(['message' => 'Estudiante eliminado correctamente'], 200);
     }
-
-
-
 }

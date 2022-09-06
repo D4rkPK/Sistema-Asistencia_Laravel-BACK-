@@ -122,7 +122,7 @@ class EstudianteController extends Controller
     }
 
     public function openFingerPrint() {
-        $answer = shell_exec('start C:\Huella.exe');
+        $answer = shell_exec('start C:\Huella\Huella.exe');
         return response()->json(['message' => $answer], 200);
     }
 }
