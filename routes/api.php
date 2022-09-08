@@ -71,6 +71,7 @@ Route::delete('/horario_asignado/delete/{id}', 'HorarioAsignadoController@destro
 
 /* REGISTRO */
 Route::get('/registro', 'RegistroController@index');
+Route::get('/registro/faltante', 'RegistroController@faltantes');
 Route::post('/registro/create', 'RegistroController@store');
 Route::get('/registro/show/{id}', 'RegistroController@show');
 Route::put('/registro/update/{id}', 'RegistroController@update');

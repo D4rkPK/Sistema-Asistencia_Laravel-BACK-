@@ -26,4 +26,9 @@ class Registro extends Model
     {
         return $this->hasOne(Horario_asignado::class, 'id', 'horario_asignado_id');
     }
+
+    public function estudiante ()
+    {
+        return $this->hasOneThrough(Estudiante::class, Horario_asignado::class, 'id', 'id', 'horario_asignado_id', 'estudiante_id');
+    }
 }

@@ -15,12 +15,14 @@ class Estudiante extends Model
     ];
 
     protected $hidden = ['huella'];
-    
+
     protected $casts = [
         'created_at' => 'datetime:d-m-Y h:i:s',
         'updated_at' => 'datetime:d-m-Y h:i:s',
         'deleted_at' => 'datetime:d-m-Y h:i:s'
     ];
+
+    protected $appends = ['full_name'];
 
     public function universidad()
     {
@@ -30,5 +32,10 @@ class Estudiante extends Model
     public function area()
     {
         return $this->hasOne(Area::class, 'id', 'area_id');
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->nombre} {$this->apellido}";
     }
 }

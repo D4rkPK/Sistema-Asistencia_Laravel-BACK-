@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Registro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class RegistroController extends Controller
 {
@@ -16,7 +17,16 @@ class RegistroController extends Controller
     public function index()
     {
         //
-        $registro = Registro::with('horario_asignado')->get();
+        $registro = Registro::with('horario_asignado', 'estudiante')->get();
+        return $this->sendResponse($registro, 200);
+    }
+
+    public function faltantes()
+    {
+        //
+        Log::info('faltantes');
+        $registro = Registro::with('horario_asignado', 'estudiante')->where('estado', '-1')->get();
+        Log::info($registro);
         return $this->sendResponse($registro, 200);
     }
 
@@ -49,6 +59,7 @@ class RegistroController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Log::info($request);
         $registro = Registro::find($id);
         if (!$registro) {
             return response()->json(['message' => 'Registro no encontrado'], 404);
