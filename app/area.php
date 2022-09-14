@@ -11,7 +11,7 @@ class Area extends Model
     use SoftDeletes;
     protected $table = 'area';
     protected $fillable = [
-        'descripcion', 'user_id'
+        'descripcion_area', 'user_id'
     ];
 
     protected $casts = [
