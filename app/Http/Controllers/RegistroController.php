@@ -65,7 +65,7 @@ class RegistroController extends Controller
             return response()->json(['message' => 'Registro no encontrado'], 404);
         }
         $registro->update($request->all());
-        return response()->json(['Registro actualizada' => $registro], 200);
+        return response()->json(['Registro actualizado' => $registro], 200);
     }
 
     public function destroy($id)

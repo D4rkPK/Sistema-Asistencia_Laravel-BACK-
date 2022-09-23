@@ -47,7 +47,7 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         $area = new Area();
-        $area->descripcion = $request->descripcion;
+        $area->descripcion_area = $request->descripcion;
         $area->user_id = $request->user_id;
         $area->save();
         return response()->json(['message' => 'Area creada correctamente'], 201);

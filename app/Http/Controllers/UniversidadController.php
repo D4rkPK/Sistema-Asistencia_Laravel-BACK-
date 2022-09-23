@@ -44,7 +44,7 @@ class UniversidadController extends Controller
     {
         //
         $universidad = new Universidad();
-        $universidad->nombre = $request->nombre;
+        $universidad->nombre_universidad = $request->nombre;
         $universidad->abreviatura = $request->abreviatura;
         $universidad->save();
         return response()->json(['message' => 'Universidad creada correctamente'], 201);
