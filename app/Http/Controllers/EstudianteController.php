@@ -51,6 +51,7 @@ class EstudianteController extends Controller
         $estudiante->carne = $request->carne;
         $estudiante->correo = $request->correo;
         $estudiante->huella = $request->huella;
+        
         $estudiante->save();
         return response()->json(['message' => 'Estudiante creado correctamente'], 201);
     }

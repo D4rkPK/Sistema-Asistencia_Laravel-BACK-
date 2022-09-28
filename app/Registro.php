@@ -13,7 +13,7 @@ class Registro extends Model
     protected $table = 'registro';
 
     protected $fillable = [
-        'horario_asignado_id', 'entrada', 'salida', 'fecha', 'comentario', 'estado', 'comentario', 'estado_comentario'
+        'horario_asignado_id', 'tipo_registro', 'entrada', 'salida', 'fecha', 'comentario', 'estado', 'comentario', 'estado_comentario'
     ];
 
     protected $casts = [

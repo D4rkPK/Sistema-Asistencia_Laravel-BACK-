@@ -28,7 +28,11 @@ class ReporteController extends Controller
             return $this->sendResponse('No existe', 404);
         }
 
+        Log::info('Hola');
+        
+        Log::info($registro);
         return $this->sendResponse($registro, 200);
+        
     }
 
 
@@ -41,7 +45,7 @@ class ReporteController extends Controller
                 ->join('estudiante', 'horario_asignado.estudiante_id', '=', 'estudiante.id')
                 ->join('area', 'estudiante.area_id', '=', 'area.id')
                 ->join('universidad', 'estudiante.universidad_id', '=', 'universidad.id')
-                ->select('*')
+                ->select('estudiante.nombre', 'estudiante.apellido','estudiante.area_id', 'estudiante.universidad_id', 'registro.entrada', 'registro.salida', 'registro.fecha', 'registro.estado', 'area.descripcion_area', 'universidad.nombre_universidad')
                 ->whereBetween('registro.fecha', [$date[0], $date[1]])
                 ->where('area.id', '=', $request->area)
                 ->get();
@@ -51,14 +55,14 @@ class ReporteController extends Controller
                 ->join('estudiante', 'horario_asignado.estudiante_id', '=', 'estudiante.id')
                 ->join('area', 'estudiante.area_id', '=', 'area.id')
                 ->join('universidad', 'estudiante.universidad_id', '=', 'universidad.id')
-                ->select('*')
+                ->select('estudiante.nombre', 'estudiante.apellido','estudiante.area_id', 'estudiante.universidad_id', 'registro.entrada', 'registro.salida', 'registro.fecha', 'registro.estado', 'area.descripcion_area', 'universidad.nombre_universidad')
                 ->whereBetween('registro.fecha', [$date[0], $date[1]])
                 ->where('area.id', '=', $request->area)
                 ->where('estado', '=', $request->estado)
                 ->get();
         }
         Log::info($registro);
-        return $registro;
+        return $this->sendResponse($registro, 200);
     }
 
     function areaUniversidades($request, $date)
@@ -70,7 +74,7 @@ class ReporteController extends Controller
                 ->join('estudiante', 'horario_asignado.estudiante_id', '=', 'estudiante.id')
                 ->join('area', 'estudiante.area_id', '=', 'area.id')
                 ->join('universidad', 'estudiante.universidad_id', '=', 'universidad.id')
-                ->select('*')
+                ->select('estudiante.nombre', 'estudiante.apellido','estudiante.area_id', 'estudiante.universidad_id', 'registro.entrada', 'registro.salida', 'registro.fecha', 'registro.estado', 'area.descripcion_area', 'universidad.nombre_universidad')
                 ->whereBetween('registro.fecha', [$date[0], $date[1]])
                 ->where('area.id', '=', $request->area)
                 ->where('universidad.id', '=', $request->universidad)
@@ -81,7 +85,7 @@ class ReporteController extends Controller
                 ->join('estudiante', 'horario_asignado.estudiante_id', '=', 'estudiante.id')
                 ->join('area', 'estudiante.area_id', '=', 'area.id')
                 ->join('universidad', 'estudiante.universidad_id', '=', 'universidad.id')
-                ->select('*')
+                ->select('estudiante.nombre', 'estudiante.apellido','estudiante.area_id', 'estudiante.universidad_id', 'registro.entrada', 'registro.salida', 'registro.fecha', 'registro.estado', 'area.descripcion_area', 'universidad.nombre_universidad')
                 ->whereBetween('registro.fecha', [$date[0], $date[1]])
                 ->where('area.id', '=', $request->area)
                 ->where('universidad.id', '=', $request->universidad)
@@ -102,7 +106,7 @@ class ReporteController extends Controller
                 ->join('estudiante', 'horario_asignado.estudiante_id', '=', 'estudiante.id')
                 ->join('area', 'estudiante.area_id', '=', 'area.id')
                 ->join('universidad', 'estudiante.universidad_id', '=', 'universidad.id')
-                ->select('*')
+                ->select('estudiante.nombre', 'estudiante.apellido','estudiante.area_id', 'estudiante.universidad_id', 'registro.entrada', 'registro.salida', 'registro.fecha', 'registro.estado', 'area.descripcion_area', 'universidad.nombre_universidad')
                 ->whereBetween('registro.fecha', [$date[0], $date[1]])
                 ->where('universidad.id', '=', $request->universidad)
                 ->get();
@@ -112,7 +116,7 @@ class ReporteController extends Controller
                 ->join('estudiante', 'horario_asignado.estudiante_id', '=', 'estudiante.id')
                 ->join('area', 'estudiante.area_id', '=', 'area.id')
                 ->join('universidad', 'estudiante.universidad_id', '=', 'universidad.id')
-                ->select('*')
+                ->select('estudiante.nombre', 'estudiante.apellido','estudiante.area_id', 'estudiante.universidad_id', 'registro.entrada', 'registro.salida', 'registro.fecha', 'registro.estado', 'area.descripcion_area', 'universidad.nombre_universidad')
                 ->whereBetween('registro.fecha', [$date[0], $date[1]])
                 ->where('universidad.id', '=', $request->universidad)
                 ->where('estado', '=', $request->estado)
@@ -132,7 +136,7 @@ class ReporteController extends Controller
                 ->join('estudiante', 'horario_asignado.estudiante_id', '=', 'estudiante.id')
                 ->join('area', 'estudiante.area_id', '=', 'area.id')
                 ->join('universidad', 'estudiante.universidad_id', '=', 'universidad.id')
-                ->select('*')
+                ->select('estudiante.nombre', 'estudiante.apellido','estudiante.area_id', 'estudiante.universidad_id', 'registro.entrada', 'registro.salida', 'registro.fecha', 'registro.estado', 'area.descripcion_area', 'universidad.nombre_universidad')
                 ->whereBetween('fecha', [$date[0], $date[1]])
                 ->get();
         } else {
@@ -141,7 +145,7 @@ class ReporteController extends Controller
                 ->join('estudiante', 'horario_asignado.estudiante_id', '=', 'estudiante.id')
                 ->join('area', 'estudiante.area_id', '=', 'area.id')
                 ->join('universidad', 'estudiante.universidad_id', '=', 'universidad.id')
-                ->select('*')
+                ->select('estudiante.nombre', 'estudiante.apellido','estudiante.area_id', 'estudiante.universidad_id', 'registro.entrada', 'registro.salida', 'registro.fecha', 'registro.estado', 'area.descripcion_area', 'universidad.nombre_universidad')
                 ->whereBetween('fecha', [$date[0], $date[1]])
                 ->where('estado', '=', $request->estado)
                 ->get();
