@@ -77,6 +77,8 @@ Route::get('/registro/show/{id}', 'RegistroController@show');
 Route::put('/registro/update/{id}', 'RegistroController@update');
 Route::delete('/registro/delete/{id}', 'RegistroController@destroy');
 
+Route::get('/registro/validarAsistencia', 'RegistroController@validarAsistencia');
+
 /* REPORTES */
 Route::post('/reporte', 'ReporteController@index');
 

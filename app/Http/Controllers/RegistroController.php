@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Estudiante;
+use App\Horario_asignado;
 use App\Registro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -78,5 +80,34 @@ class RegistroController extends Controller
         $registro->delete();
         return $this->sendResponse($registro, 'Success');
     }
+
+    /* recorre la tabla estudiantes y valida si tienen una entrada en la fecha actual en la tabla registro*/
+    public function validarAsistencia()
+    {
+        $estudiantes = Estudiante::all();
+        Log::info($estudiantes);
+        $fecha = date('Y-m-d');
+        Log::info($fecha);
+        foreach ($estudiantes as $estudiante) {
+            Log::info($estudiante->id);
+            $horario_asignado = Horario_asignado::where('estudiante_id', $estudiante->id)->get()->first();
+            Log::info('Horario asignado');
+            Log::info($horario_asignado);
+            $registro = Registro::where('horario_asignado_id', $horario_asignado->id)->where('fecha', $fecha)->first();
+            if (!$registro) {
+                $registro = new Registro();
+                $registro->horario_asignado_id = $horario_asignado->id;
+                $registro->entrada = null;
+                $registro->salida = null;
+                $registro->fecha = $fecha;
+                $registro->estado = -1;
+                $registro->save();
+                Log::info('Registro creado');
+            }
+        }
+        return response()->json(['message' => 'Asistencia validada correctamente'], 201);
+    }
+    
+
 
 }
