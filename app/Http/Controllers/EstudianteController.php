@@ -11,7 +11,7 @@ class EstudianteController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index', 'store', 'show', 'update', 'destroy']); //Exceptuamos las funciones login
+        $this->middleware('auth:api')->except(['index', 'store', 'show', 'update', 'destroy', 'openFingerPrint']); //Exceptuamos las funciones login
     }
 
     public function index()

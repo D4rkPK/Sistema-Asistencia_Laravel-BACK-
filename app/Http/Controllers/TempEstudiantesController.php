@@ -11,7 +11,7 @@ class TempEstudiantesController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index', 'store']); //Exceptuamos las funciones login
+        $this->middleware('auth:api')->except(['destroy']);
     }
 
     public function index()
@@ -35,8 +35,7 @@ class TempEstudiantesController extends Controller
     public function destroy()
     {
         Log::info('Metodo de eliminacion');
-        $temp_estudiantes = temp_estudiantes::all();
-        $temp_estudiantes->delete();
+        $temp_estudiantes = temp_estudiantes::truncate();
         return response()->json(['message' => 'Estudiante eliminado correctamente'], 200);
     }
 }
