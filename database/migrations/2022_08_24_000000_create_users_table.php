@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('puesto_id')->references('id')->on('puesto');
-            $table->foreign('area_id')->references('id')->on('area');
+            /* $table->foreign('puesto_id')->references('id')->on('puesto'); */
+            /* $table->foreign('area_id')->references('id')->on('area'); */
         });
     }
 

@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-}); */
 
 /* AUTH */
 Route::post('/login', 'adminUsers\UserController@login');
 Route::post('/register', 'adminUsers\UserController@store');
 Route::get('/users', 'adminUsers\UserController@index');
+Route::get('/test', 'adminUsers\UserController@test');
 
 /* PUESTOS */
 Route::get('/puesto', 'PuestoController@index');
@@ -86,4 +84,3 @@ Route::post('/reporte', 'ReporteController@index');
 Route::get('/temp_estudiante', 'TempEstudiantesController@index');
 Route::post('/temp_estudiante/create', 'TempEstudiantesController@store');
 Route::get('/temp_estudiante/delete', 'TempEstudiantesController@destroy');
-
