@@ -22,7 +22,7 @@ class AreaController extends Controller
     public function index()
     {
         //
-        $area = area::with('encargado')->get();
+        $area = area::all();
         return $this->sendResponse($area, 200);
 
         // load the view and pass the sharks
@@ -47,8 +47,7 @@ class AreaController extends Controller
     public function store(Request $request)
     {
         $area = new Area();
-        $area->descripcion_area = $request->descripcion;
-        $area->user_id = $request->user_id;
+        $area->descripcion_area = $request->descripcion_area;
         $area->save();
         return response()->json(['message' => 'Area creada correctamente'], 201);
     }
@@ -89,8 +88,8 @@ class AreaController extends Controller
     {
         $area = Area::find($id);
         $area->update($request->all());
-
         return response()->json(['Area actualizada' => $area], 200);
+
     }
 
     /**

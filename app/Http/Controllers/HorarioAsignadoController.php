@@ -56,13 +56,22 @@ class HorarioAsignadoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $horario_asignado = DB::table('estudiante')->select('id')->where('cui', $request->estudiante)->get()->first()->id;
+        Log::info('Metodo de editar');
+        Log::info($request->all());
 
+        $estudiante = DB::table('estudiante')->select('id')->where('cui', $request->estudiante)->get()->first()->id;
+        Log::info('ENCONTRO ESTUDIANTE');
+        Log::info($estudiante);
+
+        $horario_asignado = Horario_asignado::find($estudiante);
         if (!$horario_asignado) {
             return response()->json(['message' => 'Horario asignado no encontrado'], 404);
         }
 
-        $horario_asignado->update($request->all());
+        $horario_asignado->estudiante_id = $estudiante;
+        $horario_asignado->horario_id = $request->horario;
+
+        $horario_asignado->update();
 
         return response()->json(['Horario asignado actualizada' => $horario_asignado], 200);
     }

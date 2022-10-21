@@ -89,9 +89,7 @@ class PuestoController extends Controller
     public function update(Request $request, $id)
     {
         $puesto = Puesto::find($id);
-
         $puesto->update($request->all());
-
         return response()->json(['puesto actualizado' => $puesto], 200);
     }
 

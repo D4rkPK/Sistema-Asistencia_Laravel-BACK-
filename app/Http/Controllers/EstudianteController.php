@@ -94,14 +94,14 @@ class EstudianteController extends Controller
     public function update(Request $request, $id)
     {
         Log::info('Metodo de editar');
-        Log::info($request->all());
+        Log::info($request->estudiante);
+
         $estudiante = Estudiante::find($id);
         if (!$estudiante) {
             return response()->json(['message' => 'Estudiante no encontrado'], 404);
         }
 
-        $estudiante->update($request->all());
-
+        $estudiante->update($request->estudiante);
         return response()->json(['Estudiante actualizado' => $estudiante], 200);
     }
 

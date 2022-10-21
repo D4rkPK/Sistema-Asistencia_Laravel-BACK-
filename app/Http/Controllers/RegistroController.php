@@ -13,7 +13,7 @@ class RegistroController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index','store', 'show', 'update', 'destroy']); //Exceptuamos las funciones login
+        $this->middleware('auth:api')->except(['index','store', 'show', 'update', 'destroy', 'validarAsistencia']); //Exceptuamos las funciones login
     }
 
     public function index()
@@ -82,11 +82,14 @@ class RegistroController extends Controller
     }
 
     /* recorre la tabla estudiantes y valida si tienen una entrada en la fecha actual en la tabla registro*/
-    public function validarAsistencia()
+    public function validarAsistencia(Request $request)
     {
+        Log::info('validarAsistencia');
+        Log::info($request);
         $estudiantes = Estudiante::all();
         Log::info($estudiantes);
-        $fecha = date('Y-m-d');
+        $fecha = $request->fecha;
+        Log::info('SE VALIDA');
         Log::info($fecha);
         foreach ($estudiantes as $estudiante) {
             Log::info($estudiante->id);

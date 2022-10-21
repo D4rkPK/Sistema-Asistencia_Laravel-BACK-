@@ -11,7 +11,7 @@ class Area extends Model
     use SoftDeletes;
     protected $table = 'area';
     protected $fillable = [
-        'descripcion_area', 'user_id'
+        'descripcion_area'
     ];
 
     protected $casts = [
@@ -22,6 +22,6 @@ class Area extends Model
 
     public function encargado()
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->hasOne(User::class, 'id');
     }
 }
